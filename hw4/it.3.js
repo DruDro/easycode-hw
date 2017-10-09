@@ -4,6 +4,7 @@ const date = {
       FullYear: date.getFullYear(),
       Month: date.getMonth(),
       Day: date.getDay(),
+      Date: date.getDate(),
       Hours: date.getHours(),
       Minutes: date.getMinutes(),
       Seconds: date.getSeconds()
@@ -12,7 +13,7 @@ const date = {
     const length = Object.keys(dateObj).length;
     return {
       next: (key = Object.keys(dateObj)[index++]) => ({
-        value: key + ' is ' + dateObj[key],
+        value: `${key} is ${dateObj[key]}`,
         done: index > length
       })
     };

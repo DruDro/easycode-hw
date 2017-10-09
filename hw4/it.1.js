@@ -6,13 +6,12 @@ const names = {
 
 names[Symbol.iterator] = function() {
   const length = Object.keys(this).length;
-  names.length = length;
   let index = 0;
   return {
     next: () => {
       return {
         value: this[index++],
-        done: index > this.length
+        done: index > length
       };
     }
   }

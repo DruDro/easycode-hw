@@ -13,6 +13,5 @@ class Prom {
 /*
 const inst = new Prom();
 inst.resolve('res');
-inst.reject('rej');
 inst.promise.then(data => console.log(data));
 */
