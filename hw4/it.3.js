@@ -1,22 +1,24 @@
 const date = {
   [Symbol.iterator]: (date = new Date()) => {
-    const dateObj = {
-      FullYear: date.getFullYear(),
-      Month: date.getMonth(),
-      Day: date.getDay(),
-      Date: date.getDate(),
-      Hours: date.getHours(),
-      Minutes: date.getMinutes(),
-      Seconds: date.getSeconds()
-    }
+    const dateObj = [
+      'FullYear',
+      'Month',
+      'Day',
+      'Date',
+      'Hours',
+      'Minutes',
+      'Seconds'
+    ]
     let index = 0;
-    const length = Object.keys(dateObj).length;
+    const length = dateObj.length;
     return {
-      next: (key = Object.keys(dateObj)[index++]) => ({
-        value: `${key} is ${dateObj[key]}`,
-        done: index > length
-      })
-    };
+      next: (key = dateObj[index++], method = () => dateObj[`get${key}`]) => {
+        return method ? {
+          value: `${key} is ${method()}`,
+          done: index > length
+        } : {done:true}
+      }
+    }
   }
 };
 
