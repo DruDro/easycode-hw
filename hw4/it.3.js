@@ -5,8 +5,11 @@ const date = {
     let index = 0;
     const length = dateObj.length;
     return {
-      next: (key = dateObj[index++], method = now[`get${key}`]) => method ?
-      { value: `${key} is ${method.call(now)}`} : {done: true}
+      next: () => {
+        let key = dateObj[index++],
+            method = now[`get${key}`];
+        return method ? { value: `${key} is ${method.call(now)}`} : {done: true};
+      }
     }
   }
 };
