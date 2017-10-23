@@ -6,7 +6,7 @@ const prom = new Promise((resolve, reject) => {
     try {
         fs.mkdirSync(dirname);
     } catch (e) {
-        reject();
+        reject(e => e);
     }
     resolve();
 
