@@ -2,8 +2,14 @@ const fs = require('file-system');
 const dirname = 'date';
 let date = (new Date()).toLocaleString();
 
-(async function createDir() {
-	await fs.mkdir(dirname);
-	fs.writeFile(`${dirname}/date.txt`, date);
-}());
+const prom = new Promise((resolve, reject) => {
+    try {
+        fs.mkdirSync(dirname);
+    } catch (e) {
+        reject();
+    }
+    resolve();
 
+});
+prom.then(() => fs.writeFile(`${dirname}/date.txt`, date))
+prom.catch(e => console.log(e));
