@@ -1,5 +1,5 @@
 const fs = require('file-system');
-const dirname = 'date';
+const dirname = process.argv[2] ? process.argv[2] : 'date';
 let date = (new Date()).toLocaleString();
 
 
