@@ -1,1 +1,4 @@
 .idea
+node_modules
+/node-hw/hw4/package-lock.json
+/node-hw/hw5/package-lock.json
