@@ -37,8 +37,10 @@ https.get('https://jsonplaceholder.typicode.com/posts', (res) => {
     res.setEncoding('utf-8');
     let result = '';
     let count = 0;
-    res.on('data', data => { result += data;
-        count++ });
+    res.on('data', data => {
+        result += data;
+        count++
+    });
     res.on('end', () => console.log(result, count));
 }).on('error', e => console.error(e.message)); //WHY the fuck onError chained to http?
 
@@ -47,8 +49,8 @@ https.get('https://jsonplaceholder.typicode.com/posts', (res) => {
 const weather = require('yahoo-weather');
 
 weather('kharkov')
-    .then(data => { 
-    	console.log(data.description);
-        console.log(data.item.condition); 
+    .then(data => {
+        console.log(data.description);
+        console.log(data.item.condition);
     })
     .catch(console.log);
